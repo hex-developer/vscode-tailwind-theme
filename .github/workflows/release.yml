@@ -1,0 +1,26 @@
+name: Release extension
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install VSCE
+        run: npm install -g @vscode/vsce
+      - name: Package extension
+        run: vsce package
+      - name: Get release version
+        run: echo "version=$(sed -E 's/^refs\\/tags\\/v//gm;t' <<< ${{ github.ref }})" >> "$GITHUB_ENV"
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: tailwind-theme-$version.vsix
