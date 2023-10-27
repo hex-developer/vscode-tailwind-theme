@@ -1,0 +1,35 @@
+{
+  "name": "tailwind-theme",
+  "displayName": "Tailwind theme",
+  "publisher": "hex-developer",
+  "description": "A VSCode theme based on the Tailwind CSS website",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/hex-developer/vscode-tailwind-theme"
+  },
+  "scripts": {
+    "prestart": "tsc index.ts",
+    "start": "node index.js"
+  },
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Tailwind Dark",
+        "uiTheme": "vs-dark",
+        "path": "./theme.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "typescript": "^5.2.2",
+    "vscode-theme-generator": "*"
+  }
+}
