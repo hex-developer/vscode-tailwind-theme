@@ -19,7 +19,7 @@ jobs:
       - name: Package extension
         run: vsce package
       - name: Get release version
-        run: echo "version=tailwind-theme-$(sed -E 's/^refs\\/tags\\/v//gm;t' <<< ${{ github.ref }}).vsix" >> "$GITHUB_ENV"
+        run: echo "version=tailwind-theme-$(sed -E 's/^refs\/tags\/v//' <<< ${{ github.ref }}).vsix" >> "$GITHUB_ENV"
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
